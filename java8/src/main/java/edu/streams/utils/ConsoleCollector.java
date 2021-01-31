@@ -1,6 +1,5 @@
 package edu.streams.utils;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
@@ -45,7 +44,7 @@ public class ConsoleCollector<T> implements Collector<T, List<T>, String> {
  
     @Override
     public Set<java.util.stream.Collector.Characteristics> characteristics() {
-        return Collections.unmodifiableSet(EnumSet.of(Collector.Characteristics.UNORDERED));
+        return EnumSet.of(Collector.Characteristics.UNORDERED);
     }
     
 //    public static <T> Collector<T, ?, ?> toConsole() {
