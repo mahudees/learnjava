@@ -1,0 +1,42 @@
+**Installation from Windows
+     Make sure your windows is upto date
+     Install JDK 16
+     Install Visual Studio Communityy version -- https://visualstudio.microsoft.com/downloads
+             Make sure you have "Desktop development with C++" ticked in
+     Install Linux subsystem (Microsoft Store , Ubuntu)
+
+**Installation from Ubuntu subsystem
+     sudo apt update
+     sudo apt upgrade
+     sudo apt-get install autoconf
+     sudo apt install zip
+     sudo apt install unzip
+     sudo apt-get install build-essential
+     sudo apt-get install libx11-dev libxext-dev libxrender-dev libxrandr-dev libxtst-dev libxt-dev
+     sudo apt-get install libcups2-dev
+     sudo apt-get install libfontconfig1-dev
+     sudo apt-get install libasound2-dev
+     sudo apt-get install libfreetype6-dev
+     sudo apt-get install libffi-dev
+     sudo apt install ccache
+     sudo apt install clang
+
+#All dependent libraries / dlls and sfotwares should be there by now
+#In Ubuntu subsystem , execute the below commands
+#Note: All paths mentioned should be of unix format. 
+#In Ubuntu subsystem, windows files are accessible from /mnt/c (This is C:\\ Drive)
+
+mkdir /mnt/c/customBuild
+cd /mnt/c/customBuild
+git clone https://github.com/openjdk/jdk.git
+
+#We should have the necessary java code base by now,
+cd /mnt/c/customBuild/jdk 
+#bash configure --with-boot-jdk=<Path To Your JDK 16> --with-toolchain-version=2019
+bash configure --with-boot-jdk=/mnt/c/jdks/jdk-16 --with-toolchain-version=2019
+make jdk
+
+#For successive builds , goto /mnt/c/customBuild/jdk and issue "make jdk".
+#This will perform incremental build, meaning it will not compile the entire code base, 
+#Rather it rebuild affected java module
+
